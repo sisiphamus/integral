@@ -1,26 +1,205 @@
 @import "tailwindcss";
 
+/* ─── Custom Properties ─────────────────────────────────── */
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --background-off: #fafafa;
+  --foreground: #0a0a0a;
+  --foreground-muted: #6b6b6b;
+  --foreground-subtle: #b0b0b0;
+  --border: #e8e8e8;
+  --border-strong: #d0d0d0;
+
+  /* Spacing rhythm */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 2rem;
+  --space-xl: 4rem;
+  --space-2xl: 8rem;
+  --space-3xl: 12rem;
+
+  /* Typography scale */
+  --text-display: clamp(3.5rem, 10vw, 9rem);
+  --text-headline: clamp(2rem, 5vw, 4.5rem);
+  --text-subhead: clamp(1.25rem, 2.5vw, 2rem);
+  --text-body: 1rem;
+  --text-small: 0.875rem;
+  --text-label: 0.75rem;
+
+  /* Transition easing */
+  --ease-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-sharp: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Transition durations */
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+  --duration-slow: 450ms;
+  --duration-slower: 700ms;
 }
 
+/* ─── Tailwind Theme Registration ───────────────────────── */
 @theme inline {
   --color-background: var(--background);
+  --color-background-off: var(--background-off);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-foreground-muted: var(--foreground-muted);
+  --color-foreground-subtle: var(--foreground-subtle);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ─── Base Styles ───────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-size: var(--text-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ─── Selection ─────────────────────────────────────────── */
+::selection {
+  background-color: #e0e0e0;
+  color: var(--foreground);
+}
+
+::-moz-selection {
+  background-color: #e0e0e0;
+  color: var(--foreground);
+}
+
+/* ─── Scrollbar ─────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--foreground-muted);
+}
+
+/* ─── Font Utility Classes ──────────────────────────────── */
+.font-sans {
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+/* ─── Letter Spacing Utilities ──────────────────────────── */
+.tracking-display {
+  letter-spacing: -0.04em;
+}
+
+.tracking-headline {
+  letter-spacing: -0.02em;
+}
+
+.tracking-label {
+  letter-spacing: 0.12em;
+}
+
+.tracking-caps {
+  letter-spacing: 0.18em;
+}
+
+.tracking-ultra {
+  letter-spacing: 0.3em;
+}
+
+/* ─── Typography Utilities ──────────────────────────────── */
+.text-display {
+  font-size: var(--text-display);
+  line-height: 0.95;
+  font-weight: 300;
+  letter-spacing: -0.04em;
+}
+
+.text-headline {
+  font-size: var(--text-headline);
+  line-height: 1.05;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+}
+
+.text-subhead {
+  font-size: var(--text-subhead);
+  line-height: 1.3;
+  font-weight: 300;
+}
+
+.text-label {
+  font-size: var(--text-label);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ─── Layout Utilities ──────────────────────────────────── */
+.container-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.5rem;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 5vw, 5rem);
+}
+
+.section-padding {
+  padding-top: var(--space-2xl);
+  padding-bottom: var(--space-2xl);
+}
+
+/* ─── Off-white Section ─────────────────────────────────── */
+.bg-off-white {
+  background-color: var(--background-off);
+}
+
+/* ─── Line Separator ────────────────────────────────────── */
+.rule {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 0;
+}
+
+/* ─── Transition Utilities ──────────────────────────────── */
+.transition-smooth {
+  transition: all var(--duration-base) var(--ease-smooth);
+}
+
+.transition-slow {
+  transition: all var(--duration-slow) var(--ease-smooth);
+}
+
+/* ─── Focus Styles ──────────────────────────────────────── */
+:focus-visible {
+  outline: 1.5px solid var(--foreground);
+  outline-offset: 3px;
+}
+
+/* ─── Link Reset ────────────────────────────────────────── */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ─── Image Reset ───────────────────────────────────────── */
+img,
+video {
+  max-width: 100%;
+  display: block;
 }
