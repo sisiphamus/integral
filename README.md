@@ -1,36 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Integral
 
-## Getting Started
+A polished product landing page for a fictional AR glasses company.
 
-First, run the development server:
+"See beyond."
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Integral is a design exercise in premium consumer electronics marketing. The product: lightweight augmented reality glasses with holographic optics, neural interface, and all-day battery. The price: $1,299. The ship date: Q3 2026. None of it's real, but the page makes you reach for your wallet anyway.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## What's Here
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+A fully responsive, animation-rich landing page featuring:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Hero** with massive "INTEGRAL" display typography and a scroll indicator inviting exploration
+- **Technology grid** (6 cells) with editorial layout showcasing specs:
+  - Holographic Optics: 52-degree FOV, 4K per eye
+  - Frame: 36g titanium-carbon composite
+  - Spatial Audio with head tracking
+  - Neural Interface: EMG micro-gesture sensors
+  - All-Day Battery: 18hr graphene cells
+  - Privacy First: hardware camera shutters, on-device processing
+- **Use cases carousel** (Navigate, Create, Connect, Focus) with horizontal scroll on desktop
+- **Press quotes** from (fictional) The Verge, Wired, Bloomberg, TechCrunch, Engadget with varied typography sizes
+- **Photo gallery** in masonry grid with hover zoom
+- **Pre-order CTA** with word-by-word blur-to-focus reveal animation
+- **Animated navigation** with full-screen hamburger menu overlay and staggered link transitions
 
-## Learn More
+## Design System
 
-To learn more about Next.js, take a look at the following resources:
+The CSS layer is the real star. Extensive custom properties define a complete design token system for spacing, typography scale, easing curves, and color. Everything snaps to a consistent rhythm. The animation work uses Framer Motion for scroll-triggered reveals, staggered grid entries, word-by-word text animations, and clip-path menu transitions.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The aesthetic is deliberately Apple-minimal: white backgrounds, thin weight typography (Inter 300-600), generous whitespace, subtle hover states, and a custom 4px thin scrollbar.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Tech
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Next.js 16 (App Router), React 19, TypeScript, Framer Motion, Tailwind CSS 4, Next.js Image with Unsplash remote images.
